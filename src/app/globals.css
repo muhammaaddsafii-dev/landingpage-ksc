@@ -1,0 +1,186 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Forest-inspired color palette */
+    --background: 150 10% 98%;
+    --foreground: 150 30% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 150 30% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 150 30% 10%;
+
+    /* Deep forest green */
+    --primary: 160 45% 20%;
+    --primary-foreground: 150 10% 98%;
+
+    /* Warm earth tone */
+    --secondary: 35 30% 92%;
+    --secondary-foreground: 35 40% 25%;
+
+    --muted: 150 10% 94%;
+    --muted-foreground: 150 10% 45%;
+
+    /* Teal accent for tech feel */
+    --accent: 170 50% 35%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 150 15% 88%;
+    --input: 150 15% 88%;
+    --ring: 160 45% 20%;
+
+    --radius: 0.75rem;
+
+    /* Custom tokens */
+    --forest-deep: 160 50% 15%;
+    --forest-medium: 155 40% 28%;
+    --forest-light: 150 35% 45%;
+    --earth-warm: 35 45% 55%;
+    --earth-light: 35 30% 85%;
+    --sky-soft: 200 40% 92%;
+
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(160 50% 15%) 0%, hsl(170 45% 25%) 50%, hsl(155 40% 28%) 100%);
+    --gradient-card: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(150 10% 98%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(170 50% 35%) 0%, hsl(160 45% 20%) 100%);
+
+    /* Shadows */
+    --shadow-soft: 0 4px 20px -4px hsl(150 30% 10% / 0.1);
+    --shadow-medium: 0 8px 30px -8px hsl(150 30% 10% / 0.15);
+    --shadow-glow: 0 0 40px hsl(170 50% 35% / 0.2);
+
+    /* Fonts */
+    --font-heading: 'Sora', sans-serif;
+    --font-body: 'Inter', sans-serif;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 160 30% 8%;
+    --foreground: 150 10% 95%;
+
+    --card: 160 25% 12%;
+    --card-foreground: 150 10% 95%;
+
+    --popover: 160 25% 12%;
+    --popover-foreground: 150 10% 95%;
+
+    --primary: 160 40% 50%;
+    --primary-foreground: 160 30% 8%;
+
+    --secondary: 160 20% 18%;
+    --secondary-foreground: 150 10% 90%;
+
+    --muted: 160 20% 18%;
+    --muted-foreground: 150 10% 60%;
+
+    --accent: 170 45% 45%;
+    --accent-foreground: 160 30% 8%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 160 20% 20%;
+    --input: 160 20% 20%;
+    --ring: 160 40% 50%;
+
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+    font-family: var(--font-body);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    @apply font-semibold tracking-tight;
+  }
+}
+
+@layer utilities {
+  .font-heading {
+    font-family: var(--font-heading);
+  }
+
+  .font-body {
+    font-family: var(--font-body);
+  }
+
+  .gradient-hero {
+    background: var(--gradient-hero);
+  }
+
+  .gradient-accent {
+    background: var(--gradient-accent);
+  }
+
+  .shadow-soft {
+    box-shadow: var(--shadow-soft);
+  }
+
+  .shadow-medium {
+    box-shadow: var(--shadow-medium);
+  }
+
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--muted));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--forest-light));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--forest-medium));
+}
