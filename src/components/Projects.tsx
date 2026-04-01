@@ -8,40 +8,8 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 
-const projects = [
-  {
-    title: 'Pemetaan Kawasan Hutan Lindung',
-    location: 'Kalimantan Timur',
-    year: '2024',
-    category: 'GIS & Kehutanan',
-    description: 'Pemetaan detail kawasan hutan lindung seluas 25.000 hektar menggunakan teknologi drone dan satelit.',
-    image: 'https://images.unsplash.com/photo-1448375240586-882707db888b?w=600&h=400&fit=crop',
-  },
-  {
-    title: 'Survey Topografi Infrastruktur',
-    location: 'Sulawesi Selatan',
-    year: '2024',
-    category: 'Survey',
-    description: 'Survey topografi untuk pembangunan jalan lintas provinsi sepanjang 120 kilometer.',
-    image: 'https://images.unsplash.com/photo-1586348943529-beaae6c28db9?w=600&h=400&fit=crop',
-  },
-  {
-    title: 'Inventarisasi Tegakan Hutan',
-    location: 'Sumatera Utara',
-    year: '2023',
-    category: 'Kehutanan',
-    description: 'Inventarisasi tegakan dan analisis potensi kayu pada konsesi hutan produksi.',
-    image: 'https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?w=600&h=400&fit=crop',
-  },
-  {
-    title: 'Sistem WebGIS Monitoring',
-    location: 'Jakarta',
-    year: '2023',
-    category: 'Development',
-    description: 'Pengembangan sistem WebGIS untuk monitoring real-time kawasan konservasi.',
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop',
-  },
-];
+import { projects } from '@/lib/data';
+import Link from 'next/link';
 
 const Projects = () => {
   return (
@@ -112,10 +80,12 @@ const Projects = () => {
                       </p>
 
                       <div className="mt-auto">
-                        <Button variant="ghost" className="p-0 h-auto text-primary hover:text-accent group/btn">
-                          Lihat Detail
-                          <ArrowUpRight className="w-4 h-4 ml-1 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
-                        </Button>
+                        <Link href={`/projects/${project.id}`}>
+                          <Button variant="ghost" className="p-0 h-auto text-primary hover:text-accent group/btn">
+                            Lihat Detail
+                            <ArrowUpRight className="w-4 h-4 ml-1 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
+                          </Button>
+                        </Link>
                       </div>
                     </div>
                   </div>
@@ -129,9 +99,11 @@ const Projects = () => {
 
         {/* View All Button */}
         <div className="text-center mt-12">
-          <Button variant="outline" size="lg">
-            Lihat Semua Proyek
-          </Button>
+          <Link href="/projects">
+            <Button variant="outline" size="lg">
+              Lihat Semua Proyek
+            </Button>
+          </Link>
         </div>
       </div>
     </section>

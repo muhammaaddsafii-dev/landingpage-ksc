@@ -18,6 +18,10 @@ export const metadata: Metadata = {
     title: "KSC Indonesia - Konsultan Kehutanan & GIS",
     description: "Solusi komprehensif untuk kehutanan, GIS, survey, dan pengembangan proyek berkelanjutan.",
   },
+  icons: {
+    icon: "/logo.png",
+    apple: "/logo.png",
+  },
 };
 
 export default function RootLayout({

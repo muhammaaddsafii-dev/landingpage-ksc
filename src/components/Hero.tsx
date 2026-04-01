@@ -31,7 +31,7 @@ const Hero = () => {
 
           {/* Main Heading */}
           <h1 className="font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-primary-foreground leading-tight mb-6 animate-fade-in" style={{ animationDelay: '0.2s' }}>
-            <span style={{ color: 'rgb(255 113 41)' }}>Membangun</span> <span style={{ color: 'rgb(57 108 52)' }}>Masa Depan</span>
+            <span className="text-accent">Membangun</span> <span className="text-primary">Masa Depan</span>
             <span className="block"> Berkelanjutan</span>
           </h1>
 
