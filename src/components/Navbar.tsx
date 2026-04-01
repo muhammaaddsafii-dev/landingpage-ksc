@@ -95,9 +95,9 @@ const Navbar = () => {
               <a
                 key={link.name}
                 href={link.href}
-                className={`font-medium transition-colors hover:text-accent ${isActive(link.href) 
-                    ? 'text-accent' 
-                    : isSolid ? 'text-primary' : 'text-primary-foreground'
+                className={`font-medium transition-colors hover:text-accent ${isActive(link.href)
+                  ? 'text-accent'
+                  : isSolid ? 'text-primary' : 'text-primary-foreground'
                   }`}
               >
                 {link.name}
@@ -132,11 +132,10 @@ const Navbar = () => {
               <a
                 key={link.name}
                 href={link.href}
-                className={`block py-3 px-4 rounded-lg transition-colors ${
-                  isActive(link.href) 
-                    ? 'bg-accent/10 text-accent font-semibold' 
+                className={`block py-3 px-4 rounded-lg transition-colors ${isActive(link.href)
+                    ? 'bg-accent/10 text-accent font-semibold'
                     : 'text-foreground hover:bg-muted'
-                }`}
+                  }`}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {link.name}

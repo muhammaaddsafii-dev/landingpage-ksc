@@ -1,18 +1,18 @@
 import { Button } from '@/components/ui/button';
 import { ArrowRight, MapPin, TreePine, Compass } from 'lucide-react';
-import heroImage from '@/assets/hero-forest.jpg';
+import heroImage from '@/assets/01.jpg';
 
 const Hero = () => {
   return (
     <section id="beranda" className="relative min-h-screen flex items-center overflow-hidden pt-32 pb-16 md:py-0">
       {/* Background Image */}
-      <div className="absolute inset-0 bg-forest-deep">
+      <div className="absolute inset-0 bg-black">
         <img
           src={heroImage.src}
           alt="Aerial view of forest with GIS mapping"
           className="w-full h-full object-cover opacity-50"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-forest-deep/95 via-forest-deep/80 to-forest-deep/60" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/0 via-black/10 to-black/0" />
       </div>
 
       {/* Animated Background Elements */}
@@ -31,7 +31,7 @@ const Hero = () => {
 
           {/* Main Heading */}
           <h1 className="font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-primary-foreground leading-tight mb-6 animate-fade-in" style={{ animationDelay: '0.2s' }}>
-            <span className="text-accent">Membangun</span> <span className="text-primary">Masa Depan</span>
+            <span className="text-accent">Membangun</span> <span style={{ color: 'hsla(114, 68%, 36%, 1.00)' }}>Masa Depan</span>
             <span className="block"> Berkelanjutan</span>
           </h1>
 
