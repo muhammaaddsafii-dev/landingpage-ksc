@@ -1,24 +1,25 @@
-import { TreePine, Facebook, Instagram, Linkedin, Twitter } from 'lucide-react';
+import { Facebook, Instagram, Linkedin, Twitter } from 'lucide-react';
+import logo from '@/assets/logo.png';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   const footerLinks = {
     layanan: [
-      { name: 'Kehutanan', href: '#layanan' },
-      { name: 'GIS & Pemetaan', href: '#layanan' },
-      { name: 'Survey', href: '#layanan' },
-      { name: 'Development', href: '#layanan' },
+      { name: 'Kehutanan', href: '/#layanan' },
+      { name: 'GIS & Pemetaan', href: '/#layanan' },
+      { name: 'Survey', href: '/#layanan' },
+      { name: 'Development', href: '/#layanan' },
     ],
     perusahaan: [
-      { name: 'Tentang Kami', href: '#tentang' },
-      { name: 'Tim', href: '#tentang' },
+      { name: 'Tentang Kami', href: '/#tentang' },
+      { name: 'Tim', href: '/#tentang' },
       { name: 'Karir', href: '#' },
       { name: 'Blog', href: '#' },
     ],
     lainnya: [
-      { name: 'Portofolio', href: '#proyek' },
-      { name: 'Kontak', href: '#kontak' },
+      { name: 'Portofolio', href: '/#proyek' },
+      { name: 'Kontak', href: '/#kontak' },
       { name: 'FAQ', href: '#' },
       { name: 'Kebijakan Privasi', href: '#' },
     ],
@@ -38,10 +39,12 @@ const Footer = () => {
         <div className="py-16 grid md:grid-cols-2 lg:grid-cols-5 gap-12">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <a href="#beranda" className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 rounded-lg bg-primary-foreground/10 flex items-center justify-center">
-                <TreePine className="w-6 h-6 text-primary-foreground" />
-              </div>
+            <a href="/#beranda" className="flex items-center gap-3 mb-6">
+              <img
+                src={logo.src}
+                alt="KSC Logo"
+                className="w-10 h-10 rounded-lg object-cover bg-white"
+              />
               <span className="font-heading font-bold text-2xl">KSC</span>
             </a>
             <p className="text-primary-foreground/80 mb-6 max-w-sm leading-relaxed">
