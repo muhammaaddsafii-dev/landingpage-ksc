@@ -29,7 +29,7 @@ const Projects = () => {
         </div>
 
         {/* Projects Carousel */}
-        <div className="mx-auto max-w-5xl px-4 md:px-8">
+        <div className="relative px-4 md:px-8">
           <Carousel
             opts={{
               align: "start",
@@ -39,7 +39,7 @@ const Projects = () => {
           >
             <CarouselContent>
               {projects.map((project, index) => (
-                <CarouselItem key={project.title} className="md:basis-1/2 lg:basis-1/2 pl-4">
+                <CarouselItem key={project.title} className="md:basis-1/2 lg:basis-1/3 pl-4">
                   <div
                     className="group h-full bg-card rounded-2xl overflow-hidden shadow-soft hover:shadow-medium transition-all duration-300 border border-border/50 flex flex-col"
                   >
