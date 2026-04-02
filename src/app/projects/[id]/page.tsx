@@ -41,7 +41,7 @@ export default function ProjectDetail() {
       <Navbar />
 
       {/* Hero Section of Detail */}
-      <div className="pt-32 pb-16 bg-card border-b border-border/50">
+      <div className="pt-32 bg-card border-b border-border/50" style={{ paddingBottom: '2rem' }}>
         <div className="container mx-auto px-4 lg:px-8 max-w-5xl">
           <Link href="/projects" className="inline-flex items-center text-sm font-medium text-muted-foreground hover:text-primary mb-8 transition-colors">
             <ChevronLeft className="w-4 h-4 mr-1" />
@@ -52,9 +52,9 @@ export default function ProjectDetail() {
             <span className="inline-block px-3 py-1 bg-accent/10 text-accent rounded-full text-xs font-semibold tracking-wide mb-4">
               {project.category}
             </span>
-            <h1 className="font-heading text-4xl md:text-5xl font-bold text-foreground leading-tight w-full">
+            <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground leading-tight w-full">
               {project.title}
-            </h1>
+            </h2>
           </div>
         </div>
       </div>

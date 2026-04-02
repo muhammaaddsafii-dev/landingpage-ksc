@@ -11,7 +11,7 @@ export default function ProjectsPage() {
   return (
     <main className="min-h-screen">
       <Navbar />
-      
+
       {/* Header Space for Navbar */}
       <div className="pt-32 pb-16 bg-muted/30">
         <div className="container mx-auto px-4 lg:px-8">
@@ -19,9 +19,9 @@ export default function ProjectsPage() {
             <span className="inline-block px-4 py-1.5 bg-accent/10 text-accent rounded-full text-sm font-medium mb-4">
               Portfolio
             </span>
-            <h1 className="font-heading text-3xl md:text-5xl font-bold text-foreground mb-4">
+            <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-4">
               Semua Proyek Kami
-            </h1>
+            </h2>
             <p className="text-muted-foreground text-lg">
               Eksplorasi riwayat lengkap layanan dan pengerjaan proyek kami di berbagai sektor.
             </p>
@@ -83,7 +83,7 @@ export default function ProjectsPage() {
           </div>
         </div>
       </div>
-      
+
       <Footer />
     </main>
   );

@@ -1,6 +1,5 @@
 import { Button } from '@/components/ui/button';
 import { ArrowRight, MapPin, TreePine, Compass } from 'lucide-react';
-import heroImage from '@/assets/01.jpg';
 
 const Hero = () => {
   return (
@@ -8,7 +7,7 @@ const Hero = () => {
       {/* Background Image */}
       <div className="absolute inset-0 bg-black">
         <img
-          src={heroImage.src}
+          src="https://s3.ap-southeast-1.amazonaws.com/cdn.ruangbumi.com/kurniasylva-assets/01.jpg"
           alt="Aerial view of forest with GIS mapping"
           className="w-full h-full object-cover opacity-50"
         />
@@ -31,7 +30,7 @@ const Hero = () => {
 
           {/* Main Heading */}
           <h1 className="font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-primary-foreground leading-tight mb-6 animate-fade-in" style={{ animationDelay: '0.2s' }}>
-            <span className="text-accent">Membangun</span> <span style={{ color: 'hsla(114, 68%, 36%, 1.00)' }}>Masa Depan</span>
+            <span className="text-accent">Membangun</span> <span style={{ color: 'hsl(114.64deg 38.63% 40.72%)' }}>Masa Depan</span>
             <span className="block"> Berkelanjutan</span>
           </h1>
 
