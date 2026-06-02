@@ -105,8 +105,17 @@ const Navbar = () => {
             ))}
           </div>
 
-          {/* CTA Button */}
-          <div className="hidden md:block">
+          {/* CTA Buttons */}
+          <div className="hidden md:flex items-center gap-3">
+            <Button
+              variant={isSolid ? "outline" : "hero"}
+              size="lg"
+              asChild
+            >
+              <a href="https://ksc.ruangbumi.com" target="_blank" rel="noopener noreferrer">
+                Login
+              </a>
+            </Button>
             <Button variant={isSolid ? "default" : "hero"} size="lg">
               Hubungi Kami
             </Button>
@@ -141,9 +150,16 @@ const Navbar = () => {
                 {link.name}
               </a>
             ))}
-            <Button variant="default" className="w-full mt-4">
-              Hubungi Kami
-            </Button>
+            <div className="flex gap-2 mt-4">
+              <Button variant="outline" className="flex-1" asChild>
+                <a href="https://ksc.ruangbumi.com" target="_blank" rel="noopener noreferrer">
+                  Login
+                </a>
+              </Button>
+              <Button variant="default" className="flex-1">
+                Hubungi Kami
+              </Button>
+            </div>
           </div>
         )}
       </div>
