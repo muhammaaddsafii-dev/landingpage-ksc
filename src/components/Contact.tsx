@@ -1,55 +1,36 @@
-import { useState } from 'react';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { MapPin, Phone, Mail, Clock, Send } from 'lucide-react';
-import { useToast } from '@/hooks/use-toast';
+import { MapPin, Phone, Mail, Clock } from 'lucide-react';
+import { getKontak } from '@/lib/landingApi';
+import ContactForm from '@/components/ContactForm';
 
-const Contact = () => {
-  const { toast } = useToast();
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    subject: '',
-    message: '',
-  });
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    toast({
-      title: "Pesan Terkirim!",
-      description: "Tim kami akan menghubungi Anda segera.",
-    });
-    setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+const Contact = async () => {
+  const kontak = await getKontak();
 
   const contactInfo = [
     {
       icon: MapPin,
       title: 'Alamat',
-      content: 'Jl. Kehutanan No. 123, Jakarta Selatan, Indonesia 12345',
+      content: kontak?.alamat || 'Jl. Kehutanan No. 123, Jakarta Selatan, Indonesia 12345',
     },
     {
       icon: Phone,
       title: 'Telepon',
-      content: '+62 21 1234 5678',
+      content: kontak?.telepon || '+62 21 1234 5678',
     },
     {
       icon: Mail,
       title: 'Email',
-      content: 'info@ksc-indonesia.com',
+      content: kontak?.email || 'info@ksc-indonesia.com',
     },
     {
       icon: Clock,
       title: 'Jam Operasional',
-      content: 'Senin - Jumat: 08:00 - 17:00 WIB',
+      content: kontak?.jam_operasional || 'Senin - Jumat: 08:00 - 17:00 WIB',
     },
   ];
+
+  const lat = kontak?.koordinat_lat ?? -6.2293867;
+  const lng = kontak?.koordinat_lng ?? 106.7894636;
+  const mapSrc = `https://maps.google.com/maps?q=${lat},${lng}&z=16&output=embed&hl=id`;
 
   return (
     <section id="kontak" className="py-24 bg-background">
@@ -89,10 +70,10 @@ const Contact = () => {
               </div>
             ))}
 
-            {/* Map Placeholder */}
-            <div className="h-48 bg-muted rounded-xl overflow-hidden">
+            {/* Map */}
+            <div className="h-64 bg-muted rounded-xl overflow-hidden border border-border/50">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126920.29279507417!2d106.7894636!3d-6.2293867!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f3e945e34b9d%3A0x5371bf0fdad786a2!2sJakarta%20Selatan!5e0!3m2!1sid!2sid!4v1234567890"
+                src={mapSrc}
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
@@ -106,94 +87,7 @@ const Contact = () => {
 
           {/* Contact Form */}
           <div className="lg:col-span-3">
-            <form onSubmit={handleSubmit} className="bg-card rounded-2xl p-8 shadow-soft border border-border/50">
-              <h3 className="font-heading text-xl font-semibold text-foreground mb-6">
-                Kirim Pesan
-              </h3>
-
-              <div className="grid sm:grid-cols-2 gap-4 mb-4">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
-                    Nama Lengkap
-                  </label>
-                  <Input
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    placeholder="Masukkan nama Anda"
-                    required
-                    className="bg-background"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
-                    Email
-                  </label>
-                  <Input
-                    id="email"
-                    name="email"
-                    type="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    placeholder="nama@email.com"
-                    required
-                    className="bg-background"
-                  />
-                </div>
-              </div>
-
-              <div className="grid sm:grid-cols-2 gap-4 mb-4">
-                <div>
-                  <label htmlFor="phone" className="block text-sm font-medium text-foreground mb-2">
-                    Nomor Telepon
-                  </label>
-                  <Input
-                    id="phone"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    placeholder="+62 812 3456 7890"
-                    className="bg-background"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="subject" className="block text-sm font-medium text-foreground mb-2">
-                    Subjek
-                  </label>
-                  <Input
-                    id="subject"
-                    name="subject"
-                    value={formData.subject}
-                    onChange={handleChange}
-                    placeholder="Topik diskusi"
-                    required
-                    className="bg-background"
-                  />
-                </div>
-              </div>
-
-              <div className="mb-6">
-                <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
-                  Pesan
-                </label>
-                <Textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  placeholder="Ceritakan kebutuhan proyek Anda..."
-                  rows={5}
-                  required
-                  className="bg-background resize-none"
-                />
-              </div>
-
-              <Button type="submit" size="lg" className="w-full">
-                <Send className="w-4 h-4 mr-2" />
-                Kirim Pesan
-              </Button>
-            </form>
+            <ContactForm />
           </div>
         </div>
       </div>

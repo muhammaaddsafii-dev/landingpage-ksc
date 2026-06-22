@@ -1,22 +1,25 @@
 import { CheckCircle2, Users, Target, Award } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { getAbout } from '@/lib/landingApi';
 
-const About = () => {
+const About = async () => {
+  const about = await getAbout();
+
   const values = [
     {
       icon: Target,
       title: 'Visi',
-      description: 'Menjadi perusahaan konsultan terkemuka di Indonesia dalam bidang kehutanan, GIS, dan pembangunan berkelanjutan.',
+      description: about?.visi ?? 'Menjadi perusahaan konsultan terkemuka di Indonesia dalam bidang kehutanan, GIS, dan pembangunan berkelanjutan.',
     },
     {
       icon: Users,
-      title: 'Tim Profesional',
-      description: 'Didukung oleh tim ahli berpengalaman dengan latar belakang pendidikan dan sertifikasi profesional.',
+      title: 'Misi',
+      description: about?.misi ?? 'Memberikan layanan profesional dan inovatif yang mendukung pengelolaan sumber daya alam secara berkelanjutan, melalui teknologi terkini dan tim ahli yang berdedikasi.',
     },
     {
       icon: Award,
       title: 'Kualitas Terjamin',
-      description: 'Komitmen terhadap standar kualitas internasional dan kepuasan klien dalam setiap proyek.',
+      description: about?.standard ?? 'Komitmen terhadap standar kualitas internasional dan kepuasan klien dalam setiap proyek.',
     },
   ];
 
@@ -39,25 +42,36 @@ const About = () => {
               Tentang KSC
             </span>
             <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-6 leading-tight">
-              Membangun Kepercayaan Melalui{' '}
-              <span className="text-primary">Keahlian & Dedikasi</span>
+              {about?.header
+                ? <span dangerouslySetInnerHTML={{ __html: about.header }} />
+                : <>Membangun Kepercayaan Melalui{' '}<span className="text-primary">Keahlian &amp; Dedikasi</span></>
+              }
             </h2>
-            <p className="text-muted-foreground text-lg mb-6 leading-relaxed">
-              KSC (Konsultan Survey & Consulting) adalah perusahaan yang bergerak dalam bidang kehutanan, sistem informasi geografis (GIS), survey, dan pengembangan. Sejak berdiri, kami telah membantu berbagai instansi pemerintah dan perusahaan swasta dalam mengelola sumber daya alam secara berkelanjutan.
-            </p>
-            <p className="text-muted-foreground mb-8 leading-relaxed">
-              Dengan pendekatan berbasis teknologi dan tim profesional yang berpengalaman, kami berkomitmen untuk memberikan solusi terbaik yang tidak hanya memenuhi kebutuhan klien tetapi juga menjaga kelestarian lingkungan.
-            </p>
+            {about?.deskripsi ? (
+              <div
+                className="text-muted-foreground text-lg mb-8 leading-relaxed prose prose-sm max-w-none"
+                dangerouslySetInnerHTML={{ __html: about.deskripsi }}
+              />
+            ) : (
+              <>
+                <p className="text-muted-foreground text-lg mb-6 leading-relaxed">
+                  KSC (Konsultan Survey &amp; Consulting) adalah perusahaan yang bergerak dalam bidang kehutanan, sistem informasi geografis (GIS), survey, dan pengembangan. Sejak berdiri, kami telah membantu berbagai instansi pemerintah dan perusahaan swasta dalam mengelola sumber daya alam secara berkelanjutan.
+                </p>
+                <p className="text-muted-foreground mb-8 leading-relaxed">
+                  Dengan pendekatan berbasis teknologi dan tim profesional yang berpengalaman, kami berkomitmen untuk memberikan solusi terbaik yang tidak hanya memenuhi kebutuhan klien tetapi juga menjaga kelestarian lingkungan.
+                </p>
+              </>
+            )}
 
             {/* Achievements Grid */}
-            <div className="grid grid-cols-2 gap-3 mb-8">
+            {/* <div className="grid grid-cols-2 gap-3 mb-8">
               {achievements.map((item) => (
                 <div key={item} className="flex items-center gap-2">
                   <CheckCircle2 className="w-5 h-5 text-accent flex-shrink-0" />
                   <span className="text-sm text-foreground">{item}</span>
                 </div>
               ))}
-            </div>
+            </div> */}
 
             <Button size="lg">
               Hubungi Tim Kami
@@ -80,9 +94,10 @@ const About = () => {
                     <h3 className="font-heading text-lg font-semibold text-foreground mb-2">
                       {value.title}
                     </h3>
-                    <p className="text-muted-foreground leading-relaxed">
-                      {value.description}
-                    </p>
+                    <div
+                      className="text-muted-foreground leading-relaxed prose prose-sm max-w-none"
+                      dangerouslySetInnerHTML={{ __html: value.description }}
+                    />
                   </div>
                 </div>
               </div>

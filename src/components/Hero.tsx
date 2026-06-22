@@ -1,13 +1,18 @@
 import { Button } from '@/components/ui/button';
 import { ArrowRight, MapPin, TreePine, Compass } from 'lucide-react';
+import { getHome } from '@/lib/landingApi';
 
-const Hero = () => {
+const Hero = async () => {
+  const home = await getHome();
+  const heroImageUrl = home?.signed_file_hero_image_url
+    ?? 'https://s3.ap-southeast-1.amazonaws.com/cdn.ruangbumi.com/kurniasylva-assets/01.jpg';
+
   return (
     <section id="beranda" className="relative min-h-screen flex items-center overflow-hidden pt-32 pb-16 md:py-0">
       {/* Background Image */}
       <div className="absolute inset-0 bg-black">
         <img
-          src="https://s3.ap-southeast-1.amazonaws.com/cdn.ruangbumi.com/kurniasylva-assets/01.jpg"
+          src={heroImageUrl}
           alt="Aerial view of forest with GIS mapping"
           className="w-full h-full object-cover opacity-50"
         />
@@ -39,7 +44,6 @@ const Hero = () => {
             KSC adalah mitra terpercaya dalam layanan kehutanan, pemetaan GIS, survei lahan, dan pengembangan proyek. Kami menghadirkan solusi inovatif dengan teknologi terkini.
           </p>
 
-
           {/* Stats */}
           <div className="grid grid-cols-3 gap-6 pt-8 border-t border-primary-foreground/20 animate-fade-in" style={{ animationDelay: '0.8s' }}>
             <div className="text-center sm:text-left">
@@ -66,7 +70,6 @@ const Hero = () => {
           </div>
         </div>
       </div>
-
     </section>
   );
 };

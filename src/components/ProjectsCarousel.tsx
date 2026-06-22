@@ -1,38 +1,32 @@
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
-import Link from 'next/link';
+'use client';
+
 import { MapPin, Calendar, ArrowUpRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { getProyek } from '@/lib/landingApi';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from '@/components/ui/carousel';
+import Link from 'next/link';
+import type { ProyekData } from '@/lib/landingApi';
 
-export default async function ProjectsPage() {
-  const projects = await getProyek();
+interface Props {
+  projects: ProyekData[];
+}
+
+const ProjectsCarousel = ({ projects }: Props) => {
+  if (projects.length === 0) return null;
 
   return (
-    <main className="min-h-screen">
-      <Navbar />
-
-      <div className="pt-32 pb-16 bg-muted/30">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-12">
-            <span className="inline-block px-4 py-1.5 bg-accent/10 text-accent rounded-full text-sm font-medium mb-4">
-              Portfolio
-            </span>
-            <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Semua Proyek Kami
-            </h2>
-            <p className="text-muted-foreground text-lg">
-              Eksplorasi riwayat lengkap layanan dan pengerjaan proyek kami di berbagai sektor.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-            {projects.map((project) => (
-              <div
-                key={project.id}
-                className="group bg-card rounded-2xl overflow-hidden shadow-soft hover:shadow-medium transition-all duration-300 border border-border/50 flex flex-col"
-              >
-                {/* Cover Image */}
+    <div className="relative px-4 md:px-8">
+      <Carousel opts={{ align: 'start', loop: true }} className="w-full">
+        <CarouselContent>
+          {projects.map((project) => (
+            <CarouselItem key={project.id} className="md:basis-1/2 lg:basis-1/3 pl-4">
+              <div className="group h-full bg-card rounded-2xl overflow-hidden shadow-soft hover:shadow-medium transition-all duration-300 border border-border/50 flex flex-col">
+                {/* Image */}
                 <div className="relative h-56 overflow-hidden flex-shrink-0">
                   {project.signed_file_image_cover_url ? (
                     <img
@@ -83,12 +77,14 @@ export default async function ProjectsPage() {
                   </div>
                 </div>
               </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      <Footer />
-    </main>
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+        <CarouselPrevious className="-left-4 lg:-left-12" />
+        <CarouselNext className="-right-4 lg:-right-12" />
+      </Carousel>
+    </div>
   );
-}
+};
+
+export default ProjectsCarousel;
