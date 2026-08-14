@@ -112,7 +112,8 @@ const Navbar = () => {
               size="lg"
               asChild
             >
-              <a href="https://ksc.ruangbumi.com" target="_blank" rel="noopener noreferrer">
+              {/* <a href="https://ksc.ruangbumi.com" target="_blank" rel="noopener noreferrer"> */}
+              <a href="https://dashboard.kurniasylvagroup.com" target="_blank" rel="noopener noreferrer">
                 Login
               </a>
             </Button>
@@ -152,7 +153,8 @@ const Navbar = () => {
             ))}
             <div className="flex gap-2 mt-4">
               <Button variant="outline" className="flex-1" asChild>
-                <a href="https://ksc.ruangbumi.com" target="_blank" rel="noopener noreferrer">
+                {/* <a href="https://ksc.ruangbumi.com" target="_blank" rel="noopener noreferrer"> */}
+                <a href="https://dashboard.kurniasylvagroup.com" target="_blank" rel="noopener noreferrer">
                   Login
                 </a>
               </Button>
